@@ -1,4 +1,4 @@
-## At-a-glance
+## Overview
  
 This module let you **protect your API** by requiring a **valid access token for each request**.
  
@@ -8,11 +8,6 @@ This module let you **protect your API** by requiring a **valid access token for
  
 * Then, this module can **check if the scopes linked to the access token match all the _required scopes_ of your api operation(s)**.
  
-* Also, this module **retrieve Access token and user info _claims_**, providing you easy access to **caller's information : client_id, user's metadata (mail, first/last name, etc). (\*)(\*\*)**
- 
-_(\*) caller's information depends of the oauth2 scopes your api requested: don't forget to require profile and/or mail scopes._
- 
-_(\*\*) per oauth2 standard, no user info will be available using the client credentials flow._
  
 ## In details
  
@@ -23,7 +18,7 @@ For a detailed understanding, this module, once enabled:
 * Retrieve token info (client_id...) and user info (mail, first/last name..) from access token using Mitreid endpoints.
 * Put these token and user info into a configurable (inproc by default) cache for the lifetime of the token (TTL set by Mitreid), thus limiting further Mitreid calls.
 * Reject (401) requests that lacks, or does not have a valid access token - except for opt-out [unprotectedpaths] operations.
-* Reject (401) API calls that does not fulfil your required oauth2 _scopes_ (the coarse-grained authorization unit you grant to clients - not users - see below).
+* Reject (401) API calls that does not fulfil your required oauth2 _scopes_ .
  
 This module supports the following oauth2 flows:
  
@@ -36,7 +31,7 @@ This module supports the following oauth2 flows:
  
 ## Subscription process
  
-To let Mitreid secure your api, you'll first need a **3-minutes** setup using **Mitreid web app** or **CLI**.
+To let Mitreid secure your api, you'll first need a **2-minutes** setup using **Mitreid web app** or **Mitreid [Server API](https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki/API)**.
  
 - **Register your api** into Mitreid (including its required scopes)
  

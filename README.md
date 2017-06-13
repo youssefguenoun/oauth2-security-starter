@@ -52,6 +52,7 @@ You just have to add the dependency to your pom.xml:
     <dependency>
         <groupId>com.github.ezsecure</groupId>
         <artifactId>oauth2-security-starter</artifactId>
+        <version>1.0-SNAPSHOT</version>
    </dependency>
 
 ```

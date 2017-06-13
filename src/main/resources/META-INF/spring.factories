@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.ezsecure.oauth2.OAuth2ResourceAutoConfiguration,\
+com.github.ezsecure.oauth2.MethodSecurityConfiguration

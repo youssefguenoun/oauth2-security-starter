@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  * Spring Boot auto-configuration class to setup an Ouath2 Resource Server
  *
  * This implementation supports MitreId connect Authorization server
- * 
+ *
  * @author youssefguenoun
  */
 @Configuration

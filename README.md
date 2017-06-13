@@ -50,7 +50,7 @@ You just have to add the dependency to your pom.xml:
 ```xml
    
     <dependency>
-        <groupId>com.ezsecure.oauth2</groupId>
+        <groupId>com.github.ezsecure</groupId>
         <artifactId>oauth2-security-starter</artifactId>
    </dependency>
 
@@ -106,9 +106,9 @@ To do so, we provided a hooks to enable adding custom headers. we have to add a 
 ```yaml
     auth:
       server:
-                                resource-id : THE_API_RESOURCE_ID
-                                resource-secret : THE_API_RESOURCE_SECRET
-       authorization-server-endpoints:
+        resource-id : THE_API_RESOURCE_ID
+        resource-secret : THE_API_RESOURCE_SECRET
+        authorization-server-endpoints:
           introspect: http://localhost:8080/openid-connect-server-webapp/introspect
           userinfo: http://localhost:8080/openid-connect-server-webapp/userinfo
       service:

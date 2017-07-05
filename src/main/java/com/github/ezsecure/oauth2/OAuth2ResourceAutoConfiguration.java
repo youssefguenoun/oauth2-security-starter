@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 /**
  * Spring Boot auto-configuration class to setup an Ouath2 Resource Server
- *
+ * <p>
  * This implementation supports MitreId connect Authorization server
  *
  * @author youssefguenoun
@@ -33,7 +33,6 @@ import java.util.stream.Collectors;
 @Order(OAuth2ResourceAutoConfiguration.ORDER)
 public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAdapter {
 
-    //public static final int ORDER = 0;
     public static final int ORDER = SecurityProperties.ACCESS_OVERRIDE_ORDER;
 
     private final OAuth2SecuredServiceProperties properties;
@@ -70,7 +69,7 @@ public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAda
     /**
      * Check default scopes for all requests
      *
-     * @param http the Spring <code>{@link HttpSecurity}</code> configuration class
+     * @param http   the Spring <code>{@link HttpSecurity}</code> configuration class
      * @param scopes <<code>List</code> of String representing the global oauth2 scopes for the service
      * @throws Exception if any problem occurs
      */
@@ -119,7 +118,7 @@ public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAda
      * @throws Exception if any problem occurs
      */
     private void configureHttpHeaderFrameOptions(HttpSecurity http) throws Exception {
-        switch (properties.getService().getXframeOptions().getXframeOptionsMode()){
+        switch (properties.getService().getXframeOptions().getXframeOptionsMode()) {
             case SAMEORIGIN:
                 http.headers().frameOptions().sameOrigin();
                 break;
@@ -129,7 +128,8 @@ public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAda
             case ALLOW_FROM:
                 http.headers().frameOptions().disable().addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(properties.getService().getXframeOptions().getAllowedOrigins())));
                 break;
-            default: http.headers().frameOptions().sameOrigin();
+            default:
+                http.headers().frameOptions().sameOrigin();
         }
     }
 
@@ -137,16 +137,14 @@ public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAda
      * Provides hooks to enable adding custom headers
      *
      * @param http http http the Spring <code>{@link HttpSecurity}</code> configuration class
-     *
      * @throws Exception if any problem occurs
-     *
      */
     private void configureCustomStaticHeaders(HttpSecurity http) throws Exception {
         List<OAuth2SecuredServiceProperties.CustomHeader> customHeaders = properties.getService().getCustomHeaders();
 
-        if(!customHeaders.isEmpty()){
-            for (OAuth2SecuredServiceProperties.CustomHeader customHeader : customHeaders){
-                http.headers().addHeaderWriter(new StaticHeadersWriter(customHeader.getHeaderName(),customHeader.getHeaderValue()));
+        if (!customHeaders.isEmpty()) {
+            for (OAuth2SecuredServiceProperties.CustomHeader customHeader : customHeaders) {
+                http.headers().addHeaderWriter(new StaticHeadersWriter(customHeader.getHeaderName(), customHeader.getHeaderValue()));
             }
         }
     }
@@ -160,7 +158,7 @@ public class OAuth2ResourceAutoConfiguration extends ResourceServerConfigurerAda
     }
 
     @Bean
-    public StaticIntrospectionConfigurationService staticIntrospectionConfigurationService(){
+    public StaticIntrospectionConfigurationService staticIntrospectionConfigurationService() {
         StaticIntrospectionConfigurationService staticIntrospectionConfigurationService = new StaticIntrospectionConfigurationService();
 
         RegisteredClient registeredClient = new RegisteredClient();
